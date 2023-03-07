@@ -1,9 +1,10 @@
-from views.menuView import menuView
+from views.menuView import menu_principal
 
-#menu_principal()
+
 def main():
-  menu = menuView()
-  menu.menu_principal()
-  
+
+    menu_principal()
+
+
 if __name__ == "__main__":
     main()

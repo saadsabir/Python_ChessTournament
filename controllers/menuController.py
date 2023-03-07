@@ -1,74 +1,61 @@
 from views.tournoiView import tournoiView
-MSG_MENU_PRINCIPAL = 'Menu Principal'
+from views.joueurView import JoueurView
+from views.tourView import tourView
+from views.matchView import matchView
 MSG_EXIT = 'Merci pour votre visite, à bientot !'
 
-##sous menu tournoi
+
 sous_tournois = {
     1: 'Ajouter un tournoi',
     2: 'Afficher tous les tournois',
-    3: 'Afficher nom et date du tournois',
-    4: 'Retour au menu principal',
-    5: 'Quitter'
+    3: 'Afficher nom et date du tournois'
 }
 
 def gestion_tournois(option):
     while (True):
         try:
              option
-        except:
+        except ValueError:
             return ('Erreur. Entrer un numero ...')
-        # Check what choice was entered and act accordingly
+        t= tournoiView()
         if option == 1:
-           t= tournoiView()
            return t.ajoutertournoi()
         elif option == 2:
-            return ('Afficher tous les tournois')
+            return t.afficher_tournois()
         elif option == 3:
-            return ('Afficher nom et date du tournois')
-        elif option == 4:
-            return MSG_MENU_PRINCIPAL
-        elif option == 5:
-            return MSG_EXIT
+            return t.afficher_nom_date_tournoi()
         else:
-            return ('Option invalide. Veuillez entrer un numero entre 1 et 5.')
+            return ('Option invalide. Veuillez entrer un numero entre 1 et 13.')
 
 
-#sous menu tour
 sous_tours = {
-    1: 'Ajouter un tour',
-    2: 'Fermer un tour',
-    3: 'Afficher les tours du tournois',
-    4: 'Retour au menu principal',
-    5: 'Quitter'
+    4: 'Ajouter un tour',
+    5: 'Fermer un tour',
+    6: 'Afficher les tours du tournois'
 }
+
+
 def gestion_tours(option):
     while (True):
         try:
             option
-        except:
+        except ValueError:
             print('Erreur. Entrer un numero ...')
-        # Check what choice was entered and act accordingly
-        if option == 1:
-            return ('ajouter un tour')
-        elif option == 2:
-            return ('Fermer un tour ')
-        elif option == 3:
-            return ('Afficher les tours du tournois')
-        elif option == 4:
-            return MSG_MENU_PRINCIPAL
+        t = tourView()
+        if option == 4:
+            return t.ajouter_tour()
         elif option == 5:
-            return MSG_EXIT
+            return t.fermer_tour()
+        elif option == 6:
+            return t.afficher_tours_du_tournoi()
         else:
-            print('Option invalide. Veuillez entrer un numero entre 1 et 5.')
+            print('Option invalide. Veuillez entrer un numero entre 1 et 13.')
 
 
-#sous menu joueur
 sous_joueurs = {
-    1: 'Ajouter un joueur',
-    2: 'Afficher tous les joueurs',
-    3: 'Afficher les joueurs du tournois',
-    4: 'Retour au menu principal',
-    5: 'Quitter'
+    7: 'Ajouter un joueur',
+    8: 'Afficher tous les joueurs',
+    9: 'Afficher les joueurs du tournois'
 }
 def gestion_joueurs(option):
     while (True):
@@ -76,26 +63,21 @@ def gestion_joueurs(option):
             option
         except:
             print('Erreur. Entrer un numero ...')
-        # Check what choice was entered and act accordingly
-        if option == 1:
-            return('ajouter un joueur')
-        elif option == 2:
-            return ('Afficher tous les joueurs')
-        elif option == 3:
-            return ('Afficher les joueurs du tournois')
-        elif option == 4:
-            return MSG_MENU_PRINCIPAL
-        elif option == 5:
-            return MSG_EXIT
+        t = JoueurView()
+        if option == 7:
+            return t.add_joueur()
+        elif option == 8:
+            return t.afficher_joueurs()
+        elif option == 9:
+            return t.afficher_joueurs_tournoi()
         else:
-            return ('Option invalide. Veuillez entrer un numero entre 1 et 5 .')
+            return ('Option invalide. Veuillez entrer un numero entre 1 et 13.')
 
-#sous menu match
+
 sous_match = {
-    1: 'Definir un gagnant',
-    2: 'Afficher les matchs d un tour',
-    3: 'Retour au menu principal',
-    4: 'Quitter'
+    10: "Mettre à jour le score d'un match",
+    11: "Afficher les matchs d'un tour",
+    12: "Générer les paires d'un tour"
 }
 
 def gestion_match(option):
@@ -104,17 +86,15 @@ def gestion_match(option):
             option
         except:
             print('Erreur. Entrer un numero ...')
-        # Check what choice was entered and act accordingly
-        if option == 1:
-            return ('definir un gagnant')
-        elif option == 2:
-            return ('Afficher les matchs d un tour')
-        elif option == 3:
-             return MSG_MENU_PRINCIPAL
-        elif option == 4:
-            return MSG_EXIT
+         m = matchView()
+        if option == 10:
+            return m.gagnant()
+        elif option == 11:
+            return m.afficher_matchs_by_tour()
+        elif option == 12:
+            return m.create_match()
         else:
-            return ('Option invalide. Veuillez entrer un numero entre 1 et 4.')
+            return ('Option invalide. Veuillez entrer un numero entre 1 et 13.')
 
 
 
